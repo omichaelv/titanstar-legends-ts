@@ -3,6 +3,9 @@
 This is a test application made for Wizards. Following the guidelines and assets provided [here](https://github.com/DnDBeyond/front-end-developer-challenge?tab=readme-ov-file) .
 I followed up the rules they describe and the functionality they wanted on the project and also added extra features.
 
+![image](https://github.com/omichaelv/titanstar-legends-ts/assets/76706433/24fda4bf-4916-47c0-89db-edf0b2b9c5d0)
+
+
 # Project Details
 
 The project follows a folder structure that enables to easily maintain the code. This is the structure:
