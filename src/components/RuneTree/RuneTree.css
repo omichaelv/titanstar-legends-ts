@@ -1,0 +1,58 @@
+.rune-tree-container {
+  display: grid;
+  grid-template-columns: 4fr 1fr; 
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+  gap: 20px; 
+  background: url('../../assets/talent-calc-bg.png') no-repeat center center;
+  background-size: cover;
+  padding: 20px;
+  border: 1px solid #333;
+  border-radius: 10px;
+}
+
+.rune-tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.talent-path {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.points-spent-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.points-spent-box {
+  background: rgba(0, 0, 0, 0.2);
+  border: 2px solid #fff;
+  padding: 25px;
+  border-radius: 1px;
+  border-color:#0c0f12;
+  text-align: center;
+}
+
+.points-spent {
+  font-size: 30px;
+  color: #fff;
+}
+
+.points-spent-number {
+  font-size: 28px;
+  color: #fff;
+}
+
+.points-spent-label {
+  font-size: 28px;
+  color: #2b3c4d;
+}

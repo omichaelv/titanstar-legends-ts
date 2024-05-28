@@ -1,0 +1,41 @@
+.rune-item {
+  margin: 0; 
+  width: 50px;
+  height: 50px;
+  background: url('../../assets/talent-icons-sprite.png') no-repeat;
+  background-size: 400px 100px; 
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s;
+  border: 2px solid #888; 
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+}
+
+.rune-item.active {
+  border-color: #5d80a3; 
+  box-shadow: 0 0 15px rgba(93,128,163, 0.75); 
+}
+
+.rune-item:hover {
+  transform: scale(1.1);
+}
+
+.connection-bar {
+  height: 4px;
+  background-color: #888; 
+  z-index: 0;
+  flex-grow: 1; 
+  margin: 0 -1px; 
+}
+
+.connection-bar.active {
+  background-color: #fff; 
+}
+
+.horizontal-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
