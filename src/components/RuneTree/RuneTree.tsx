@@ -1,10 +1,13 @@
 import React, { useRef, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUndo } from '@fortawesome/free-solid-svg-icons';
 import RuneItem from '../RuneItem/RuneItem';
 import { Rune } from '../../interfaces/Rune';
 import './RuneTree.css';
 import addPointSound from '../../assets/sounds/activate.wav';
 import subtractPointSound from '../../assets/sounds/cancel.wav';
 import HoverBox from '../HoverBox/HoverBox';
+import Notification from '../Notification/Notification';
 
 
 
@@ -27,17 +30,24 @@ const RuneTree: React.FC = () => {
   const [totalPoints, setTotalPoints] = useState<number>(0);
   const [hoveredRune, setHoveredRune] = useState<Rune | null>(null);
   const [hoverPosition, setHoverPosition] = useState<{ top: number; left: number }>({ top: 0, left: 0 });
+  const [notification, setNotification] = useState<string | null>(null);
   const addSoundRef = useRef<HTMLAudioElement>(null);
   const subtractSoundRef = useRef<HTMLAudioElement>(null);
 
   const handleLeftClick = (id: number) => {
     setRunes((prevRunes) => {
       const rune = prevRunes.find((r) => r.id === id);
-      if (rune && rune.points === 0 && canAddPoint(rune) && totalPoints < MAX_POINTS) {
-        rune.points = 1;
-        setTotalPoints(totalPoints + 1);
-        if (addSoundRef.current) {
-          addSoundRef.current.play();
+      if (rune && rune.points === 0) {
+        if (totalPoints < MAX_POINTS) {
+          if (canAddPoint(rune)) {
+            rune.points = 1;
+            setTotalPoints(totalPoints + 1);
+            if (addSoundRef.current) {
+              addSoundRef.current.play();
+            }
+          }
+        } else {
+          setNotification("Maximum points reached. You can't activate more runes.");
         }
       }
       return [...prevRunes];
@@ -65,6 +75,15 @@ const RuneTree: React.FC = () => {
 
   const handleMouseLeave = () => {
     setHoveredRune(null);
+  };
+
+  const handleCloseNotification = () => {
+    setNotification(null);
+  };
+
+  const handleReset = () => {
+    setRunes(initialRunes.map(rune => ({ ...rune, points: 0 })));
+    setTotalPoints(0);
   };
 
   const canAddPoint = (rune: Rune): boolean => {
@@ -136,9 +155,13 @@ const RuneTree: React.FC = () => {
         <div className="points-spent-box">
           <div className="points-spent-number">{totalPoints} / {MAX_POINTS}</div>
           <div className="points-spent-label">Points Spent</div>
+          <button className="reset-button" onClick={handleReset}>
+            <FontAwesomeIcon icon={faUndo} />
+          </button>
         </div>
       </div>
       {hoveredRune && <HoverBox title={hoveredRune.title} description={hoveredRune.description} position={hoverPosition} />}
+      {notification && <Notification message={notification} onClose={handleCloseNotification} />}
     </div>
   );
 }
