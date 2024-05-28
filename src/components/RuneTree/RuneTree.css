@@ -8,6 +8,8 @@
   white-space: nowrap; 
 }
 
+
+
 .rune-tree-container {
   display: grid;
   grid-template-columns: 4fr 1fr; 
@@ -15,11 +17,8 @@
   max-width: 1200px;
   box-sizing: border-box;
   gap: 20px; 
-  background: url('../../assets/talent-calc-bg.png') no-repeat center center;
-  background-size: cover;
   padding: 20px;
-  border: 1px solid #333;
-  border-radius: 10px;
+
 }
 
 .rune-tree {
