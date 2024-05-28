@@ -1,46 +1,38 @@
-# Getting Started with Create React App
+# TitanStar Legends Rune Mastery Loadout Talent Calculator 9000
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a test aplication made for Wizards. Following the guidelines and assets provided [here](https://github.com/DnDBeyond/front-end-developer-challenge?tab=readme-ov-file) .
+I followed up the rules they describe and the functionality they wanted on the project and also added extra features.
 
-## Available Scripts
+# Project Details
 
-In the project directory, you can run:
+The project follows a folder structure that enables to easily maintain the code. This is the structure:
 
-### `npm start`
+ - Public Folder
+ - src folder
+	 - assets
+	 - components
+	 - interfaces
+	 - modules
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The assets folders holds all the assets in subfolders depending if they are images or sounds. 
+The component folder holds all the components group by subfolders. The interface folder has all our custom interface that we need on the project and the modules all the modules that we need (wav module so that react ts identifies .wav files)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Expected Rules
+The calculator has the following rules:
+-   Left click to add points.
+-   Right click to remove points.
+-   The user may only use up to 6 points.
+-   Each item only accounts for one point.
+-   Displays current point total
+-   The user must select the items in order.
+    -   For example: The user may not put a point in the cake without first having put points in the chevrons and the silverware (in that order).
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Extra Features
+Aside the expected features I added the following:
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+ - Sound effects when activating or deactivating runes.
+ - Reset button to refund all skill points
+ - Share button that creates a screenshot of the loadout, as this is a tool for a community they might want to share the builds they make.
+ - Notification message when trying to activate a rune without any more skillpoints.
+ - Hover box that show the rune description.

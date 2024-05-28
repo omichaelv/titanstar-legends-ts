@@ -16,3 +16,10 @@
   border: 1px solid #333;
   border-radius: 10px;
 }
+
+
+@media (max-width: 768px) {
+  .App {
+    padding: 10px; /* Adjust padding */
+  }
+}
