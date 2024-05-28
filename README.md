@@ -5,6 +5,9 @@ I followed up the rules they describe and the functionality they wanted on the p
 
 ![image](https://github.com/omichaelv/titanstar-legends-ts/assets/76706433/24fda4bf-4916-47c0-89db-edf0b2b9c5d0)
 
+![image](https://github.com/omichaelv/titanstar-legends-ts/assets/76706433/f42bc161-e153-4378-8cc6-dfe513f353e3)
+
+
 
 # Project Details
 
