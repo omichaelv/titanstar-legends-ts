@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import RuneItem from '../RuneItem/RuneItem';
 import { Rune } from '../../interfaces/Rune';
 import './RuneTree.css';
+import addPointSound from '../../assets/sounds/activate.wav';
+import subtractPointSound from '../../assets/sounds/cancel.wav';
 
 
 
@@ -22,6 +24,8 @@ const initialRunes: Rune[] = [
 const RuneTree: React.FC = () => {
   const [runes, setRunes] = useState<Rune[]>(initialRunes);
   const [totalPoints, setTotalPoints] = useState<number>(0);
+  const addSoundRef = useRef<HTMLAudioElement>(null);
+  const subtractSoundRef = useRef<HTMLAudioElement>(null);
 
   const handleLeftClick = (id: number) => {
     setRunes((prevRunes) => {
@@ -29,6 +33,9 @@ const RuneTree: React.FC = () => {
       if (rune && rune.points === 0 && canAddPoint(rune) && totalPoints < MAX_POINTS) {
         rune.points = 1;
         setTotalPoints(totalPoints + 1);
+        if (addSoundRef.current) {
+          addSoundRef.current.play();
+        }
       }
       return [...prevRunes];
     });
@@ -40,6 +47,9 @@ const RuneTree: React.FC = () => {
       if (rune && rune.points === 1 && canRemovePoint(rune)) {
         rune.points = 0;
         setTotalPoints(totalPoints - 1);
+        if (subtractSoundRef.current) {
+          subtractSoundRef.current.play();
+        }
       }
       return [...prevRunes];
     });
@@ -59,6 +69,8 @@ const RuneTree: React.FC = () => {
 
   return (
     <div className="rune-tree-container">
+       <audio ref={addSoundRef} src={addPointSound} preload="auto" />
+       <audio ref={subtractSoundRef} src={subtractPointSound} preload="auto" />
       <div className="rune-tree">
         <div className="talent-path">
         <div className="talent-path-title">TALENT PATH 1</div>

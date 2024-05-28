@@ -5,4 +5,6 @@ export interface Rune {
     required: number[];
     iconX: number;  
     iconY: number; 
+    title: string;
+    description: string;
   }

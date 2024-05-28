@@ -11,7 +11,7 @@
 }
 
 .background {
-  background: url('assets/talent-calc-bg.png') no-repeat center center;
+  background: url('assets/images/talent-calc-bg.png') no-repeat center center;
   background-size: cover;
   border: 1px solid #333;
   border-radius: 10px;
