@@ -24,31 +24,33 @@ const RuneTree: React.FC = () => {
   const [totalPoints, setTotalPoints] = useState<number>(0);
 
   const handleLeftClick = (id: number) => {
-    if (totalPoints < MAX_POINTS) {
-      setRunes((prevRunes) =>
-        prevRunes.map((rune) =>
-          rune.id === id && canAddPoint(rune)
-            ? { ...rune, points: rune.points + 1 }
-            : rune
-        )
-      );
-      setTotalPoints(totalPoints + 1);
-    }
+    setRunes((prevRunes) => {
+      const rune = prevRunes.find((r) => r.id === id);
+      if (rune && rune.points === 0 && canAddPoint(rune) && totalPoints < MAX_POINTS) {
+        rune.points = 1;
+        setTotalPoints(totalPoints + 1);
+      }
+      return [...prevRunes];
+    });
   };
 
   const handleRightClick = (id: number) => {
-    setRunes((prevRunes) =>
-      prevRunes.map((rune) =>
-        rune.id === id && rune.points > 0
-          ? { ...rune, points: rune.points - 1 }
-          : rune
-      )
-    );
-    setTotalPoints(totalPoints - 1);
+    setRunes((prevRunes) => {
+      const rune = prevRunes.find((r) => r.id === id);
+      if (rune && rune.points === 1 && canRemovePoint(rune)) {
+        rune.points = 0;
+        setTotalPoints(totalPoints - 1);
+      }
+      return [...prevRunes];
+    });
   };
 
   const canAddPoint = (rune: Rune): boolean => {
     return rune.required.every((reqId) => runes.find((r) => r.id === reqId && r.points > 0));
+  };
+
+  const canRemovePoint = (rune: Rune): boolean => {
+    return runes.every((r) => !r.required.includes(rune.id) || r.points === 0);
   };
 
   const isActive = (id: number): boolean => {
@@ -59,6 +61,7 @@ const RuneTree: React.FC = () => {
     <div className="rune-tree-container">
       <div className="rune-tree">
         <div className="talent-path">
+        <div className="talent-path-title">TALENT PATH 1</div>
           {runes.slice(0, 4).map((rune, index) => (
             <div key={rune.id} className="horizontal-container">
               <RuneItem
@@ -75,7 +78,9 @@ const RuneTree: React.FC = () => {
             </div>
           ))}
         </div>
+        
         <div className="talent-path">
+        <div className="talent-path-title">TALENT PATH 2</div>
           {runes.slice(4).map((rune, index) => (
             <div key={rune.id} className="horizontal-container">
               <RuneItem
