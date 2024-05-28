@@ -1,6 +1,6 @@
 # TitanStar Legends Rune Mastery Loadout Talent Calculator 9000
 
-This is a test aplication made for Wizards. Following the guidelines and assets provided [here](https://github.com/DnDBeyond/front-end-developer-challenge?tab=readme-ov-file) .
+This is a test application made for Wizards. Following the guidelines and assets provided [here](https://github.com/DnDBeyond/front-end-developer-challenge?tab=readme-ov-file) .
 I followed up the rules they describe and the functionality they wanted on the project and also added extra features.
 
 # Project Details
